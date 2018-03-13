@@ -1,0 +1,21 @@
+.user-card-wrapper {
+    padding: 20px;
+    height: 300px;
+
+    position: relative;
+
+    .user-card-options {
+        position: absolute;
+        top: 6%;
+        right: 4%;
+
+        .user-edit-button {
+            // background: whitesmoke;
+        }
+        .user-delete-button {
+            // background: maroon;
+        }
+    }
+}
+
+

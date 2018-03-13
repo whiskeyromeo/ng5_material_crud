@@ -1,0 +1,37 @@
+$iconWidth: 56px;
+.sidenav-toggle {
+    display: none;
+
+    padding: 0;
+    margin: 8px;
+    min-width: $iconWidth;
+
+    @media (max-width: 720px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    mat-icon {
+        font-size: 30px;
+        height: $iconWidth;
+        width: $iconWidth;
+        line-height: $iconWidth;
+        color: white;
+    }
+
+}
+
+.mat-toolbar {
+    padding: 0px;
+}
+
+.mat-toolbar > span {
+  font-family: 'Mina', sans-serif;
+
+}
+
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}

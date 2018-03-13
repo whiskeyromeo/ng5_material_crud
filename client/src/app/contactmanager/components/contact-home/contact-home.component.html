@@ -1,0 +1,34 @@
+<div class="mat-card-wrapper">
+  <mat-card>
+    <img mat-card-image src="https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg">
+    <mat-card-title>
+      There was a time...
+    </mat-card-title>
+    <mat-card-subtitle>By John Doe</mat-card-subtitle>
+    <mat-card-content>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum repellendus corporis adipisci, distinctio ratione tempore molestiae minus autem quam voluptatem sunt. Necessitatibus cumque voluptas ipsum nostrum asperiores aut enim quae!</p>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Self aware panel
+              </mat-panel-title>
+              <mat-panel-description>
+                I am feeling a little {{panelOpenState ? 'open' : 'closed'}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum repellendus corporis adipisci, distinctio ratione tempore molestiae minus autem quam voluptatem sunt. Necessitatibus cumque voluptas ipsum nostrum asperiores aut enim quae!</p>
+        <fa name="pied-piper-alt" animation="spin"></fa>
+        <fa name="dna" animation="spin"></fa>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum repellendus corporis adipisci, distinctio ratione tempore molestiae minus autem quam voluptatem sunt. Necessitatibus cumque voluptas ipsum nostrum asperiores aut enim quae!</p>
+    </mat-card-content>
+  </mat-card>
+  <div class="home-card-overlay">
+    <h3>Looking For Inspiration?</h3>
+  </div>
+  
+</div>
+

@@ -1,0 +1,23 @@
+    .settings-overlay {
+      position: absolute;
+      top: 80%;
+      right: 0%;
+      color: white;
+      font-size: 34px;
+    }
+
+    .mat-button {
+      min-width: 1%;
+      height: 48px;
+      width: 48px;
+    }
+
+    .settings-button {
+      background: rgba(112, 106, 106, 0.4);
+    }
+
+    .slow-spin {
+      -webkit-animation: fa-spin 6s infinite linear;
+      animation: fa-spin 6s infinite linear;
+    }
+

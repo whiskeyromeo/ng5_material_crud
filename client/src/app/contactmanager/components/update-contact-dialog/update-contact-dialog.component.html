@@ -1,0 +1,68 @@
+<mat-horizontal-stepper [linear]="false" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form class="update-contact-first-form" [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="user.name" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput formControlName="bio" [(ngModel)]="user.bio" placeholder="Bio" required></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Pick out your birthdate</ng-template>
+      <mat-form-field>
+        <input matInput [(ngModel)]="user.birthDate" formControlName="birthDate" [matDatepicker]="picker" placeholder="Choose a date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+           atp-time-picker
+           [(ngModel)]="user.startTime"
+           formControlName="startTime"
+           placeholder="Start Time"
+           [pattern]="timePattern"
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Pick out your Avatar</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="Avatar" [(ngModel)]="user.avatar" formControlName="avatar">
+          <mat-select-trigger>
+            <mat-icon svgIcon={{user.avatar}}></mat-icon> {{ user.avatar }}
+          </mat-select-trigger>
+          <mat-option *ngFor="let avatar of avatars" [value]="avatar">
+            <mat-icon svgIcon={{avatar}}></mat-icon> {{ avatar }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Submit!</ng-template>
+    <div class="submit-wrapper">  
+      <button (click)="updateUser()" mat-raised-button color="primary">Complete the update...</button>
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button class="mat-warn" (click)="dismiss()">Dismiss</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

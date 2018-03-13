@@ -1,0 +1,51 @@
+
+
+<div class="notes-container mat-elevation-z8">
+  <div class="notes-header">
+    <mat-form-field>
+      <input matInput #filter  (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  
+  <mat-table #notesTable [dataSource]="dataSource" matSort>
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-cell *matCellDef="let note"> {{note.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let note"> {{note.title}} </mat-cell>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
+      <mat-cell *matCellDef="let note"> {{note.createdAt | date: 'yyyy-MM-dd'}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="options">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell class="notes-table-options" *matCellDef="let note">
+        <button mat-button color="primary" (click)="editNote(note)">
+          <mat-icon>create</mat-icon>
+        </button>
+        <button mat-button color="warn" (click)="deleteNote(note._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+   
+  <mat-paginator #paginator [pageSize]="3" [pageSizeOptions]="[3, 5, 10]" [showFirstLastButtons]="false">
+  </mat-paginator>
+  <div layout="row" align="end">
+    <button mat-fab color="primary" (click)="openAddNoteDialog()"><mat-icon>create</mat-icon></button>
+  </div>
+</div>

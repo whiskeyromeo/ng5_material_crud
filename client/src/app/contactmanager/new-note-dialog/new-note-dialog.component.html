@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Add New Note</h2>
+<form [formGroup]="noteForm" ngSubmit="save()">
+  <mat-dialog-content>
+    <div class="new-note-container">
+      <mat-form-field>
+        <input #title matInput placeholder="Title" formControlName="title" required>
+        <mat-error *ngIf="noteForm.controls['title'].hasError('required')">Title is required</mat-error>
+        <mat-error *ngIf="noteForm.controls['title'].hasError('minlength')">Title must be at least 3 characters</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea #content matInput minlength="5" placeholder="Content" formControlName="content" required></textarea>
+        <mat-hint align="end">{{content.value?.length || 0}}/160</mat-hint>
+        {{noteForm.get('content').validators | json }}
+        <mat-error *ngIf="noteForm.controls['content'].hasError('required')">Content is required</mat-error>
+        <mat-error *ngIf="noteForm.controls['content'].hasError('minlength')">Content must be at 5 least characters</mat-error>
+        <mat-error *ngIf="noteForm.controls['content'].hasError('maxlength')">Content cannot be more than 160 characters</mat-error>
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button color="primary" [disabled]="!noteForm.valid" (click)="save()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+    <button mat-button color="primary" (click)="dismiss()">
+      <mat-icon>cancel</mat-icon> Cancel
+    </button>
+  </mat-dialog-actions>
+</form>
